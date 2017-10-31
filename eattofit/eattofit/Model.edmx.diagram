@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5a8d76d8df634380baf7e4d3a99f7da1" Name="Diagram1">
+        <EntityTypeShape EntityType="eatfitdados2Model.Cartao" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eatfitdados2Model.Categoria" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="eatfitdados2Model.Cliente" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eatfitdados2Model.Endereco" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eatfitdados2Model.Fornecedor" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eatfitdados2Model.Nota" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eatfitdados2Model.Pedido" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="eatfitdados2Model.Produto" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="eatfitdados2Model.FK__Cartao__IdFornec__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="eatfitdados2Model.FK__Produto__IdCateg__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="eatfitdados2Model.FK__Nota__IdCliente__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="eatfitdados2Model.FK__Fornecedo__IdEnd__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="eatfitdados2Model.FK__Nota__IdEndereco__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="eatfitdados2Model.FK__Nota__IdForneced__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="eatfitdados2Model.FK__Produto__IdForne__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="eatfitdados2Model.FK__Nota__IdPedido__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="eatfitdados2Model.FK__Pedido__IdProdut__6B24EA82" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

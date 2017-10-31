@@ -1,0 +1,45 @@
+﻿@model IEnumerable<eattofit.Pedido>
+
+@{
+    ViewBag.Title = "ListaPedidos";
+}
+
+<h2>ListaPedidos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QantidadePedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorPedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto.NomeProduto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.QantidadePedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorPedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Produto.NomeProduto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdPedido }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdPedido }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdPedido })
+        </td>
+    </tr>
+}
+
+</table>
