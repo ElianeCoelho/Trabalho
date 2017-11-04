@@ -33,5 +33,7 @@ namespace eattofit
         public virtual DbSet<Nota> Nota { get; set; }
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Produto> Produto { get; set; }
+
+        public System.Data.Entity.DbSet<eattofit.Models.FormularioContato> FormularioContatoes { get; set; }
     }
 }

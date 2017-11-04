@@ -21,8 +21,55 @@ namespace eattofit.Controllers
             return View(produto.ToList());
         }
 
-        // GET: Produto/Details/5
-        public ActionResult Details(int? id)
+
+        public ActionResult UploadImagem()
+        {
+            return View();
+        }
+
+
+
+
+
+        [HttpPost]
+        public ActionResult UploadImagem(HttpPostedFileBase arquivo)
+        {
+
+            if(arquivo == null)
+            {
+
+                ViewBag.MsgError = "Selecione um arquivo";
+                return RedirectToAction("Index");
+            }
+            var extenssao = System.IO.Path.GetExtension(arquivo.FileName);
+            if(extenssao.Equals(".png", StringComparison.CurrentCultureIgnoreCase)
+                ||extenssao.Equals(".gif", StringComparison.CurrentCultureIgnoreCase)
+                                || extenssao.Equals(".jpg", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var nomeUnico = String.Format("{0}_{1}{2}", System.IO.Path.GetFileNameWithoutExtension(arquivo.FileName),
+                    DateTime.Now.Ticks, extenssao);
+
+                var nomeUnicoTeste = nomeUnico;
+                arquivo.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Arquivos"), nomeUnico));
+                ViewBag.Message = "Arquivo Carregado com sucesso!";
+
+
+            }
+            else
+            {
+                ViewBag.Message = "Somente Imagens Formato PNG, JPG e GIF são permitidos";
+            }
+
+                return View();
+        }
+
+
+
+
+
+
+            // GET: Produto/Details/5
+            public ActionResult Details(int? id)
         {
             if (id == null)
             {
