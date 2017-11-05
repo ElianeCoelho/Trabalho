@@ -3,61 +3,69 @@
 @{
     ViewBag.Title = "ListaClientes";
 }
+@if (Session["IdFornecedor"] != null)
+{
 
-<h2>ListaClientes</h2>
+    <h2>Bem Vindo @Session["Email"].ToString()</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cpf)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cnpj)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Senha)
-        </th>
-        <th></th>
-    </tr>
+    <h2 style="text-align:center">Seus Clientes</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cpf)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cnpj)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Senha)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdCliente }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCliente }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdCliente })
-        </td>
-    </tr>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cnpj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cpf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cnpj)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.IdCliente }) |
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+}
+else
+{
+    <p style="text-align:center">Faça o login para ter acesso ao conteúdo</p>
+
 }
 
-</table>

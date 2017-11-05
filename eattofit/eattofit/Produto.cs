@@ -14,12 +14,28 @@ namespace eattofit
         }
     
         public int IdProduto { get; set; }
+
+        [Required(ErrorMessage = "Obrigatório informar Nome")]
+        [Display(Name = "Nome Produto")]
+        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage =
+ "Números e caracteres especiais não são permitidos no Nome.")]
         public string NomeProduto { get; set; }
-        public string DescricaoProduto { get; set; }
+
+        [Required(ErrorMessage = "Obrigatório informar Descrição")]
+        [Display(Name = "Descrição")]
+         public string DescricaoProduto { get; set; }
+
+        [Required(ErrorMessage = "Obrigatório informar Valor")]
+        [Display(Name = "Valor Produto")]
         public Nullable<decimal> ValorProduto { get; set; }
+
         public Nullable<int> IdCategoria { get; set; }
+
+
         public Nullable<int> IdFornecedor { get; set; }
-    
+
+        [Required(ErrorMessage = "Obrigatório informar Categoria")]
+        [Display(Name = "Categoria")]
         public virtual Categoria Categoria { get; set; }
         public virtual Fornecedor Fornecedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

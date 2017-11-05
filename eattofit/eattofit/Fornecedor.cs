@@ -20,10 +20,10 @@ namespace eattofit
         [Display(Name = "Nome do Representante")]
         public string Nome { get; set; }
 
+        [Display(Name = "CPF")]
         public string Cpf { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar CPF ou CNPJ")]
-        [Display(Name = "Cpf ou Cnpj")]
+        [Display(Name = "CNPJ")]
         public string Cnpj { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar o Telefone")]

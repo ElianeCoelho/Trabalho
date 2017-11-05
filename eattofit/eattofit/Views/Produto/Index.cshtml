@@ -4,54 +4,68 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@if (Session["IdFornecedor"] != null)
+{
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeProduto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescricaoProduto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorProduto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Categoria.DescriçãoCategoria)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fornecedor.Nome)
-        </th>
-        <th></th>
-    </tr>
+    <h2>Olá @Session["Email"].ToString()</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeProduto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescricaoProduto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorProduto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categoria.DescriçãoCategoria)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdProduto }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdProduto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdProduto })
-        </td>
-    </tr>
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescricaoProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria.DescriçãoCategoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fornecedor.Nome)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescricaoProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.DescriçãoCategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdProduto }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdProduto }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdProduto })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+}
+else{ 
+
+    <p style="text-align:center">Faça o login para ter acesso a este conteúdo</p>
 }
 
-</table>
