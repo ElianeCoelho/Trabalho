@@ -73,16 +73,13 @@ namespace eattofit.Controllers
         {
 
 
-            //var idSessao = Session["IdFornecedor"];
 
-            ////var filtro = db.Fornecedor.Select(from f in db.Fornecedor where (f.IdFornecedor == idSessao));
+           int idSessao = int.Parse(Session["IdFornecedor"].ToString());
 
-            //var filtro2 = new SelectList(db.Fornecedor, "IdFornecedor", "", idSessao);
-
+            var filtro = from f in db.Fornecedor where f.IdFornecedor == idSessao select f;
 
 
-
-            return View(db.Fornecedor.ToList());
+            return View(filtro);
         }
 
 
