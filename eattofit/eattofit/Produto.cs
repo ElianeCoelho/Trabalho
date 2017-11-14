@@ -29,13 +29,13 @@ namespace eattofit
         [Display(Name = "Valor Produto")]
         public Nullable<decimal> ValorProduto { get; set; }
 
+        [Display(Name = "Categoria")]
+        [Required(ErrorMessage = "Obrigatório informar Categoria")]
         public Nullable<int> IdCategoria { get; set; }
 
 
         public Nullable<int> IdFornecedor { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar Categoria")]
-        [Display(Name = "Categoria")]
         public virtual Categoria Categoria { get; set; }
         public virtual Fornecedor Fornecedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -190,3 +190,7 @@ C:\Users\eliane\Documents\PAP\RepositorioGIT\eattofit\eattofit\obj\Debug\eattofi
 C:\Users\eliane\Documents\PAP\RepositorioGIT\eattofit\eattofit\obj\Debug\eattofit.csproj.CoreCompileInputs.cache
 C:\Users\eliane\Documents\PAP\RepositorioGIT\eattofit\eattofit\obj\Debug\eattofit.dll
 C:\Users\eliane\Documents\PAP\RepositorioGIT\eattofit\eattofit\obj\Debug\eattofit.pdb
+C:\Users\eliane\Documents\PAP\RepositorioGIT\eattofit\eattofit\bin\PagedList.dll
+C:\Users\eliane\Documents\PAP\RepositorioGIT\eattofit\eattofit\bin\PagedList.Mvc.dll
+C:\Users\eliane\Documents\PAP\RepositorioGIT\eattofit\eattofit\bin\PagedList.xml
+C:\Users\eliane\Documents\PAP\RepositorioGIT\eattofit\eattofit\bin\PagedList.Mvc.xml

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
+using PagedList;
 using System.Web.Mvc;
-using eattofit;
-using System.Web.UI;
 
 namespace eattofit.Controllers
 {
@@ -16,11 +13,65 @@ namespace eattofit.Controllers
         private eatfitdados2Entities db = new eatfitdados2Entities();
 
         // GET: Produto
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var produto = db.Produto.Include(p => p.Categoria).Include(p => p.Fornecedor);
+        //    return View(produto.ToList());
+        //}
+
+        public ActionResult Index(String sortOrder, string currentFilter, string searchString, int? page)
         {
-            var produto = db.Produto.Include(p => p.Categoria).Include(p => p.Fornecedor);
-            return View(produto.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NomeParam = String.IsNullOrEmpty(sortOrder) ? "NomeProduto" : "";
+            ViewBag.DescricaoParam = String.IsNullOrEmpty(sortOrder) ? "Descricao" : "";
+            ViewBag.ValorParam = String.IsNullOrEmpty(sortOrder) ? "Valor" : "";
+            ViewBag.CategoriaParam = String.IsNullOrEmpty(sortOrder) ? "Categoria" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+
+            }
+            else
+            {
+                searchString = currentFilter;
+
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var produtos = from s in db.Produto select s;
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                produtos = produtos.Where(s => s.NomeProduto.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            switch(sortOrder)
+            {
+                case "NomeProduto":
+                    produtos = produtos.OrderByDescending(s => s.NomeProduto);
+
+                    break;
+
+                case "Categoria":
+                    produtos = produtos.OrderByDescending(s => s.Categoria);
+
+                    break;
+
+                default:
+                    produtos = produtos.OrderBy(s => s.NomeProduto);
+                    break;
+
+            }
+
+            int quantidadePorPagina = 3;
+            int numeroPagina = (page ?? 1);
+            return View(produtos.ToPagedList(numeroPagina, quantidadePorPagina));
+
         }
+
 
 
         public ActionResult UploadImagem()

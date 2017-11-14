@@ -4,14 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-@if (Session["IdFornecedor"] != null)
-{
-
-    <h2>Olá @Session["Email"].ToString()</h2>
-
-
-
-}
 
 <div class="content">
     <div id="colOneFornecedor">
@@ -24,7 +16,7 @@
         <div class="jumbotron">
             <ul>
                 <li>@Html.ActionLink("Gerenciar Produtos", "Index", "Produto")</li>
-                <li>@Html.ActionLink("Cadastrar Cartões Aceitos", "Create", "Cartao")</li>
+                <li>@Html.ActionLink("Gerenciar Cartões", "Create", "Cartao")</li>
                 <li>@Html.ActionLink("Vizualizar Clientes", "ListaClientes", "Cliente")</li>
                 <li>@Html.ActionLink("Histórico de Vendas", "ListaPedidos", "Pedido")</li>
             </ul>

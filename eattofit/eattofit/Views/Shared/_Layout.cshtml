@@ -16,6 +16,16 @@
         <h2>
             <a onclick="Index">Nosso melhor para o seu melhor</a>
         </h2>
+
+        @if (Session["IdFornecedor"] != null)
+        {
+
+            <h2 style="text-align:left">Olá :) @Session["Email"].ToString()</h2>
+
+
+
+        }
+
     </div>
 
 

@@ -1,38 +1,44 @@
-﻿@model IEnumerable<eattofit.Produto>
+﻿
+@using PagedList.Mvc;
+@model PagedList.IPagedList<eattofit.Produto>
+
 
 @{
     ViewBag.Title = "Index";
 }
-
-@if (Session["IdFornecedor"] != null)
-{
-
-    <h2>Olá @Session["Email"].ToString()</h2>
-
     <h2>Gerenciar Produtos</h2>
     <br/>
 
     <p>
       @Html.ActionLink("Criar Novo Produto", "Create")
     </p>
+    <input type="submit" value="Buscar"
+
+    @using (Html.BeginForm("Index", "Fornecedor", FormMethod.Get))
+    {
+        <p>
+        Procura por Nome: @Html.TextBox("SearchString");
+            </p>
+    }
+
+
+
     <br/>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NomeProduto)
+                @Html.ActionLink("Nome do Produto", "Index", new { sortOrder = ViewBag.NomeParam})
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DescricaoProduto)
+                @Html.ActionLink("Descrição do Produto", "Index", new { sortOrder = ViewBag.DescricaoParam })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ValorProduto)
+                @Html.ActionLink("Valor do Produto", "Index", new { sortOrder = ViewBag.ValorParam })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Categoria.DescriçãoCategoria)
+                @Html.ActionLink("Categoria do Produto", "Index", new { sortOrder = ViewBag.CategoriaParam })
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fornecedor.Nome)
-            </th>
+           
             <th></th>
         </tr>
 
@@ -64,10 +70,13 @@
 
     </table>
 
-
+ 
 }
 else{ 
 
     <p style="text-align:center">Faça o login para ter acesso a este conteúdo</p>
 }
+
+       Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of  @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortorder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 

@@ -72,8 +72,20 @@ namespace eattofit.Controllers
         public ActionResult ListaFornecedor()
         {
 
+
+            //var idSessao = Session["IdFornecedor"];
+
+            ////var filtro = db.Fornecedor.Select(from f in db.Fornecedor where (f.IdFornecedor == idSessao));
+
+            //var filtro2 = new SelectList(db.Fornecedor, "IdFornecedor", "", idSessao);
+
+
+
+
             return View(db.Fornecedor.ToList());
         }
+
+
 
 
         public ActionResult EncerrarSessao()
