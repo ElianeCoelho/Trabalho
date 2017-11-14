@@ -71,6 +71,7 @@ namespace eattofit.Controllers
         // GET: Fornecedor
         public ActionResult ListaFornecedor()
         {
+
             return View(db.Fornecedor.ToList());
         }
 
@@ -115,8 +116,7 @@ namespace eattofit.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdFornecedor,Nome,Cpf,Cnpj,Telefone,RazaoSocial,Email,Senha,ConfirmaSenha,IdEndereco")] Fornecedor fornecedor)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) { 
                 db.Fornecedor.Add(fornecedor);
                 db.SaveChanges();
                 return RedirectToAction("Create", "Endereco", new {IdFornecedor = fornecedor.IdFornecedor});

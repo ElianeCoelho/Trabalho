@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Cadastro</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -72,9 +70,9 @@
                 @Html.DisplayFor(modelItem => item.Endereco.Rua)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdFornecedor }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IdFornecedor }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdFornecedor })
+                @Html.ActionLink("Editar", "Edit", new { id = item.IdFornecedor }) |
+                @Html.ActionLink("Detahes", "Details", new { id = item.IdFornecedor }) |
+                @Html.ActionLink("Deletar", "Delete", new { id = item.IdFornecedor })
             </td>
         </tr>
     }

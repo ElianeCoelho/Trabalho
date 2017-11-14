@@ -62,7 +62,7 @@ namespace eattofit.Controllers
 
                 db.SaveChanges();
 
-                return RedirectToAction("ListaFornecedor", "Fornecedor");
+                return RedirectToAction("Index", "Fornecedor");
             }
 
             return View(endereco);
