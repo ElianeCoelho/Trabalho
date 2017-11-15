@@ -222,14 +222,19 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagens\elo.png" />
     <Content Include="Imagens\fundoSobreNos.png" />
     <Content Include="Imagens\fundoSobreNos3.png" />
     <Content Include="Imagens\img1.gif" />
     <Content Include="Imagens\imgFolhas.jpg" />
     <Content Include="Imagens\img3.gif" />
     <Content Include="Imagens\logoSNome.png" />
+    <Content Include="Imagens\mastercard.png" />
+    <Content Include="Imagens\refeicao.png" />
     <Content Include="Imagens\SNos.png" />
     <Content Include="Imagens\spacer.gif" />
+    <Content Include="Imagens\ticket.jpg" />
+    <Content Include="Imagens\visa.png" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

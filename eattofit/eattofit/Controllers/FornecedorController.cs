@@ -67,8 +67,7 @@ namespace eattofit.Controllers
             catch
             {
                 ModelState.AddModelError(string.Empty,"The item cannot be removed");
-                return View("Index1");
-                string text = ViewBag.Message = "erro";
+               
 
                return RedirectToAction("Login");
 
