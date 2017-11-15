@@ -48,7 +48,7 @@ namespace eattofit.Controllers
                 produtos = produtos.Where(s => s.NomeProduto.ToUpper().Contains(searchString.ToUpper()));
             }
 
-            switch(sortOrder)
+            switch (sortOrder)
             {
                 case "NomeProduto":
                     produtos = produtos.OrderByDescending(s => s.NomeProduto);
@@ -84,39 +84,58 @@ namespace eattofit.Controllers
 
 
         //[HttpPost]
-        //public ActionResult UploadImagem(HttpPostedFileBase arquivo)
+        //public async Task<ActionResult> UploadImagem(HttpPostedFileBase file)
         //{
-
-
-        //    if (arquivo == null)
+        //    if (file != null && file.ContentLength > 0)
         //    {
+        //        var user = await GetCurrentUserAsync();
+        //        var username = user.UserName;
+        //        var fileExt = Path.GetExtension(file.FileName);
+        //        var fnm = username + ".png";
 
-        //        ViewBag.MsgError = "Selecione um arquivo";
-        //        return RedirectToAction("Index");
+
+        //        if (fileExt.ToLower().EndsWith(".png") || fileExt.ToLower().EndsWith(".jpg") || fileExt.ToLower().EndsWith(".gif"))
+        //        {
+
+        //            var filePath = HostingEnvironment.MapPath("~/Content/foto") + fnm;
+        //            var diretorio = new DirectoryInfo(HostingEnvironment.MapPath("~/Content/foto"));
+        //            if (diretorio.Exists == false)
+        //            {
+        //                diretorio.Create();
+        //            }
+        //            ViewBag.FilePath = filePath.ToString();
+        //            file.SaveAs(filePath);
+        //            return RedirectToAction("Index", new { Message = ManageMessageId.PhotUploadSucess });
+
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("Index", new { Message = ManageMessageId.FileExtensionError });
+
+        //        }
+
+
         //    }
-        //    var extenssao = System.IO.Path.GetExtension(arquivo.FileName);
-        //    if(extenssao.Equals(".png", StringComparison.CurrentCultureIgnoreCase)
-        //        ||extenssao.Equals(".gif", StringComparison.CurrentCultureIgnoreCase)
-        //                        || extenssao.Equals(".jpg", StringComparison.CurrentCultureIgnoreCase))
-        //    {
-        //        //var nomeUnico = String.Format("{0}_{1}{2}", System.IO.Path.GetFileNameWithoutExtension(arquivo.FileName),
-        //        //    DateTime.Now.Ticks, extenssao);
 
-        //        arquivo.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Arquivos"), arquivo.FileName));
+        //    return RedirectToAction("Index", new { Message = ManageMessageId.Error });
 
-        //        return View("Index");
-        //        ViewBag.Message = "Arquivo Carregado com sucesso!";
-
-        //    }
-        //    else
-        //    {
-        //        ViewBag.Message = "Somente Imagens Formato PNG, JPG e GIF são permitidos";
-        //    }
-
-        //        return View();
         //}
 
-          
+        //public Task<ApplicationUser> GetCurrentUserAsync()
+        //{
+        //    return await UserManager.FindByIdAsync(User.Identity.GetUserId());
+        //}
+
+        //public enum ManageMessageId{
+        //    Error,
+        //    PhotUploadSucess,
+        //    FileExtensionError
+
+        //}
+
+
+        
+
 
 
         // GET: Produto/Details/5

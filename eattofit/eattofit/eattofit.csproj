@@ -317,7 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Arquivos\" />
+    <Folder Include="Content\fotos\" />
     <Folder Include="Views\Nota\" />
     <Folder Include="Views\UploadDeImagem\" />
   </ItemGroup>

@@ -43,8 +43,7 @@ namespace eattofit.Controllers
         [HttpPost]
         public ActionResult Login(Fornecedor fornecedor)
         {
-            using (eatfitdados2Entities db = new eatfitdados2Entities())
-            {
+            try { 
                 var fornec = db.Fornecedor.Single(f => f.Email == fornecedor.Email && f.Senha == fornecedor.Senha);
                 if (fornec != null)
                 {
@@ -59,9 +58,22 @@ namespace eattofit.Controllers
 
 
                     ModelState.AddModelError("", "Email ou Senha Incorreto.");
-                }
+                
             }
+            
             return View();
+
+            }
+            catch
+            {
+                ModelState.AddModelError(string.Empty,"The item cannot be removed");
+                return View("Index1");
+                string text = ViewBag.Message = "erro";
+
+               return RedirectToAction("Login");
+
+            }
+
         }
 
 

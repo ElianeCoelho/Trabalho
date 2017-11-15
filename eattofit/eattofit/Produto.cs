@@ -27,6 +27,8 @@ namespace eattofit
 
        
         [Display(Name = "Valor Produto")]
+        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString ="{0:C2}", ApplyFormatInEditMode = true)]
         public Nullable<decimal> ValorProduto { get; set; }
 
 

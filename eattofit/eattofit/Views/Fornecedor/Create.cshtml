@@ -56,26 +56,25 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Fornecedor</h4>
         <hr />
          @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         
         
-        
-        <p style="text-align:center"> deseja realizar cadastro com quais dos documentos</p>
-        <div id="ativarDivsCpfeCnpj" style="text-align:center" class="content-Layout">
-            <div class="postcontent">
+        <p style="margin-left:200px"> Quer Iniciar Cadastro Como: </p>
 
-            <input id="mostrarCpf" type="radio" value="cpf" name="cpf"><b>CPF</b><label>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;</label>
+        <div class="form-group" style="margin-left:200px">
 
-            <input id="mostrarCnpj" type="radio" value="cnpj" name="cnpj"><b>CNPJ</b>
-                </div>
+            <div class="checkbox">
+
+                <input id="mostrarCpf" type="checkbox" value="cpf" name="cpf"><b>Pessoa Física</b>
             </div>
-            
-        
-        
-        
+            <div class="checkbox">
+                <input id="mostrarCnpj" type="checkbox" value="cnpj" name="cnpj"><b>Pessoa Jurídica</b>
+            </div>
+
+        </div>
+
         
         
         
