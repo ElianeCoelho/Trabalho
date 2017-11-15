@@ -25,9 +25,10 @@ namespace eattofit
         [Display(Name = "Descrição")]
          public string DescricaoProduto { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar Valor")]
+       
         [Display(Name = "Valor Produto")]
         public Nullable<decimal> ValorProduto { get; set; }
+
 
         [Display(Name = "Categoria")]
         [Required(ErrorMessage = "Obrigatório informar Categoria")]

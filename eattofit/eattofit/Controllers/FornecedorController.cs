@@ -284,5 +284,25 @@ namespace eattofit.Controllers
 
 
 
+
+//        public ActionResult EmailUnico(string Email)
+//        {
+//            boolean emailValido = false;
+
+//            emailValido = chamada a sua classe de verificacao de email com retorno(true / false)
+
+
+//if (emailValido == true)
+//            {
+//                return Json(true, JsonRequestBehavior.AllowGet);
+//            }
+//            else
+//            {
+//                return Json(string.Format("E-mail '{0}' já esta cadastrado.", Email), JsonRequestBehavior.AllowGet);
+//            }
+//        }
+
+//        public ActionResult Verificaemail(FO)
+
     }
 }

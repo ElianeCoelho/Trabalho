@@ -6,18 +6,20 @@
 @{
     ViewBag.Title = "Index";
 }
-    <h2>Gerenciar Produtos</h2>
+    <h3>Gerenciar Produtos</h3>
     <br/>
 
-    <p>
-      @Html.ActionLink("Criar Novo Produto", "Create")
+    <p style="text-align:right">
+      @Html.ActionLink("Criar Novo Produto", "Create", "Produto")
     </p>
-    <input type="submit" value="Buscar"
+    <br/>
 
-    @using (Html.BeginForm("Index", "Fornecedor", FormMethod.Get))
+
+    @using (Html.BeginForm("Index", "Produto", FormMethod.Get))
     {
         <p>
-        Procura por Nome: @Html.TextBox("SearchString");
+        Procura por Nome: @Html.TextBox("SearchString")
+            <input type="submit" value="Buscar" />
             </p>
     }
 
@@ -57,12 +59,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Categoria.DescriçãoCategoria)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
-                </td>
+                
                 <td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.IdProduto }) |
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.IdProduto }) |
                     @Html.ActionLink("Deletar", "Delete", new { id = item.IdProduto })
                 </td>
             </tr>
@@ -71,12 +70,9 @@
     </table>
 
  
-}
-else{ 
 
-    <p style="text-align:center">Faça o login para ter acesso a este conteúdo</p>
-}
-
-       Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of  @Model.PageCount
+<div style="text-align:center">
+    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de  @Model.PageCount
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortorder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
+</div>

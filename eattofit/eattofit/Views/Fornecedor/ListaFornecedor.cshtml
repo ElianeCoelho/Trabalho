@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Cadastro</h2>
+<h3 style="text-align:center">Perfil</h3>
 
 
 <table class="table">
@@ -12,6 +12,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Cpf)
         </th>
@@ -27,15 +28,8 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Senha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConfirmaSenha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Endereco.Rua)
-        </th>
+        
+
         <th></th>
     </tr>
 
@@ -60,21 +54,81 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
+           
+
+
+
             <td>
-                @Html.DisplayFor(modelItem => item.Senha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConfirmaSenha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco.Rua)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.IdFornecedor }) |
-                @Html.ActionLink("Detahes", "Details", new { id = item.IdFornecedor }) |
-                @Html.ActionLink("Deletar", "Delete", new { id = item.IdFornecedor })
+                @Html.ActionLink("Editar", "Edit", new { id = item.IdFornecedor })<br/>
+               
             </td>
         </tr>
     }
 
 </table>
+
+<br/>
+
+
+<p>_______________________________________________________________________________________________________________________________</p>
+
+<h3 style="text-align:center">Endereço</h3>
+<table class="table">
+<tr>
+    
+    <th>
+        @Html.DisplayNameFor(model => model.Endereco.Cep)
+    </th>
+
+    <th>
+        @Html.DisplayNameFor(model => model.Endereco.Rua)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Endereco.Numero)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Endereco.Bairro)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Endereco.Cidade)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Endereco.Estado)
+    </th>
+
+
+    <th></th>
+</tr>
+
+@foreach (var item in Model)
+{
+    <tr><td>
+            @Html.DisplayFor(modelItem => item.Endereco.Cep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco.Rua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco.Numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco.Bairro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco.Estado)
+        </td>
+
+
+
+    </tr>
+}
+
+
+    <td>
+        @Html.ActionLink("Editar", "Create", "Endereco")<br />
+
+    </td>
+    </table>

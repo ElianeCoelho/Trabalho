@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 namespace eattofit
 {
+    using eattofit.Models;
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+
     public partial class Fornecedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,12 +23,15 @@ namespace eattofit
         public string Nome { get; set; }
 
         [Display(Name = "CPF")]
+        /*[CustomValidationCPF(ErrorMessage = "CPF inválido")*/
         public string Cpf { get; set; }
 
         [Display(Name = "CNPJ")]
         public string Cnpj { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar o Telefone")]
+
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^[2-9]\d{1}-\d{5}-\d{4}$", ErrorMessage = "Você deve digitar um telefone no formato ##-#####-#### utilize os traços")]
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar Nome Empresa")]
