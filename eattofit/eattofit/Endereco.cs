@@ -12,12 +12,10 @@ namespace eattofit
             this.Fornecedor = new HashSet<Fornecedor>();
             this.Nota = new HashSet<Nota>();
         }
-        [Key]
+    
         public int IdEndereco { get; set; }
-
         [Required(ErrorMessage = "Obrigatório informar Rua")]
         public string Rua { get; set; }
-
         [Required(ErrorMessage = "Obrigatório informar o Número")]
         [Display(Name = "Número")]
         public string Numero { get; set; }
@@ -37,6 +35,9 @@ namespace eattofit
 
         [Required(ErrorMessage = "Obrigatório informar o Estado")]
         public string Estado { get; set; }
+
+
+        public Nullable<int> IdEnderecoMobile { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fornecedor> Fornecedor { get; set; }

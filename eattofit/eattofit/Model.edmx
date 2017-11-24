@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="eatfitdados2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="eatfitdados2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cartao">
           <Key>
             <PropertyRef Name="IdCartao" />
@@ -27,9 +27,9 @@
           </Key>
           <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cpf" Type="varchar" MaxLength="11" />
+          <Property Name="Cpf" Type="varchar" MaxLength="16" />
           <Property Name="Cnpj" Type="varchar" MaxLength="13" />
-          <Property Name="Telefone" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="Telefone" Type="varchar" MaxLength="20" />
           <Property Name="Email" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Senha" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
@@ -45,6 +45,7 @@
           <Property Name="Bairro" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Cidade" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="IdEnderecoMobile" Type="int" />
         </EntityType>
         <EntityType Name="Fornecedor">
           <Key>
@@ -72,6 +73,9 @@
           <Property Name="IdPedido" Type="int" />
           <Property Name="IdEndereco" Type="int" />
           <Property Name="FormaPagamento" Type="varchar" MaxLength="50" />
+          <Property Name="CpfCliente" Type="varchar" MaxLength="16" />
+          <Property Name="IdPedidoMobile" Type="int" />
+          <Property Name="IdEnderecoMobile" Type="int" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
@@ -81,6 +85,8 @@
           <Property Name="QantidadePedido" Type="int" />
           <Property Name="IdProduto" Type="int" />
           <Property Name="ValorPedido" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="IdNota" Type="int" />
+          <Property Name="IdPedidoMobile" Type="int" />
         </EntityType>
         <EntityType Name="Produto">
           <Key>
@@ -92,6 +98,7 @@
           <Property Name="ValorProduto" Type="decimal" Precision="8" Scale="2" />
           <Property Name="IdCategoria" Type="int" />
           <Property Name="IdFornecedor" Type="int" />
+          <Property Name="Url" Type="varchar" MaxLength="200" />
         </EntityType>
         <Association Name="FK__Cartao__IdFornec__73BA3083">
           <End Role="Fornecedor" Type="Self.Fornecedor" Multiplicity="0..1" />
@@ -165,6 +172,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Pedido__IdNota__02084FDA">
+          <End Role="Nota" Type="Self.Nota" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nota">
+              <PropertyRef Name="IdNota" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="IdNota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Pedido__IdProdut__6B24EA82">
           <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
@@ -234,6 +253,10 @@
             <End Role="Pedido" EntitySet="Pedido" />
             <End Role="Nota" EntitySet="Nota" />
           </AssociationSet>
+          <AssociationSet Name="FK__Pedido__IdNota__02084FDA" Association="Self.FK__Pedido__IdNota__02084FDA">
+            <End Role="Nota" EntitySet="Nota" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
           <AssociationSet Name="FK__Pedido__IdProdut__6B24EA82" Association="Self.FK__Pedido__IdProdut__6B24EA82">
             <End Role="Produto" EntitySet="Produto" />
             <End Role="Pedido" EntitySet="Pedido" />
@@ -247,8 +270,7 @@
             <End Role="Produto" EntitySet="Produto" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="eatfitdados2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -276,9 +298,9 @@
           </Key>
           <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Cpf" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Cpf" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="Cnpj" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="Telefone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Senha" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Nota" Relationship="Self.FK__Nota__IdCliente__6E01572D" FromRole="Cliente" ToRole="Nota" />
@@ -297,6 +319,7 @@
           <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Fornecedor" Relationship="Self.FK__Fornecedo__IdEnd__4BAC3F29" FromRole="Endereco" ToRole="Fornecedor" />
           <NavigationProperty Name="Nota" Relationship="Self.FK__Nota__IdEndereco__70DDC3D8" FromRole="Endereco" ToRole="Nota" />
+          <Property Name="IdEnderecoMobile" Type="Int32" />
         </EntityType>
         <EntityType Name="Fornecedor">
           <Key>
@@ -332,6 +355,10 @@
           <NavigationProperty Name="Endereco" Relationship="Self.FK__Nota__IdEndereco__70DDC3D8" FromRole="Nota" ToRole="Endereco" />
           <NavigationProperty Name="Fornecedor" Relationship="Self.FK__Nota__IdForneced__6EF57B66" FromRole="Nota" ToRole="Fornecedor" />
           <NavigationProperty Name="Pedido" Relationship="Self.FK__Nota__IdPedido__6FE99F9F" FromRole="Nota" ToRole="Pedido" />
+          <Property Name="CpfCliente" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="IdPedidoMobile" Type="Int32" />
+          <Property Name="IdEnderecoMobile" Type="Int32" />
+          <NavigationProperty Name="Pedido1" Relationship="eatfitdados2Model.FK__Pedido__IdNota__02084FDA" FromRole="Nota" ToRole="Pedido" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
@@ -343,6 +370,9 @@
           <Property Name="ValorPedido" Type="Decimal" Precision="8" Scale="2" />
           <NavigationProperty Name="Nota" Relationship="Self.FK__Nota__IdPedido__6FE99F9F" FromRole="Pedido" ToRole="Nota" />
           <NavigationProperty Name="Produto" Relationship="Self.FK__Pedido__IdProdut__6B24EA82" FromRole="Pedido" ToRole="Produto" />
+          <Property Name="IdNota" Type="Int32" />
+          <Property Name="IdPedidoMobile" Type="Int32" />
+          <NavigationProperty Name="Nota1" Relationship="eatfitdados2Model.FK__Pedido__IdNota__02084FDA" FromRole="Pedido" ToRole="Nota" />
         </EntityType>
         <EntityType Name="Produto">
           <Key>
@@ -357,6 +387,7 @@
           <NavigationProperty Name="Categoria" Relationship="Self.FK__Produto__IdCateg__5535A963" FromRole="Produto" ToRole="Categoria" />
           <NavigationProperty Name="Fornecedor" Relationship="Self.FK__Produto__IdForne__5629CD9C" FromRole="Produto" ToRole="Fornecedor" />
           <NavigationProperty Name="Pedido" Relationship="Self.FK__Pedido__IdProdut__6B24EA82" FromRole="Produto" ToRole="Pedido" />
+          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Cartao__IdFornec__73BA3083">
           <End Role="Fornecedor" Type="Self.Fornecedor" Multiplicity="0..1" />
@@ -511,7 +542,23 @@
             <End Role="Produto" EntitySet="Produto" />
             <End Role="Pedido" EntitySet="Pedido" />
           </AssociationSet>
+          <AssociationSet Name="FK__Pedido__IdNota__02084FDA" Association="eatfitdados2Model.FK__Pedido__IdNota__02084FDA">
+            <End Role="Nota" EntitySet="Nota" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__Pedido__IdNota__02084FDA">
+          <End Type="eatfitdados2Model.Nota" Role="Nota" Multiplicity="0..1" />
+          <End Type="eatfitdados2Model.Pedido" Role="Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nota">
+              <PropertyRef Name="IdNota" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="IdNota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -552,6 +599,7 @@
           <EntitySetMapping Name="Endereco">
             <EntityTypeMapping TypeName="eatfitdados2Model.Endereco">
               <MappingFragment StoreEntitySet="Endereco">
+                <ScalarProperty Name="IdEnderecoMobile" ColumnName="IdEnderecoMobile" />
                 <ScalarProperty Name="IdEndereco" ColumnName="IdEndereco" />
                 <ScalarProperty Name="Rua" ColumnName="Rua" />
                 <ScalarProperty Name="Numero" ColumnName="Numero" />
@@ -582,6 +630,9 @@
           <EntitySetMapping Name="Nota">
             <EntityTypeMapping TypeName="eatfitdados2Model.Nota">
               <MappingFragment StoreEntitySet="Nota">
+                <ScalarProperty Name="IdEnderecoMobile" ColumnName="IdEnderecoMobile" />
+                <ScalarProperty Name="IdPedidoMobile" ColumnName="IdPedidoMobile" />
+                <ScalarProperty Name="CpfCliente" ColumnName="CpfCliente" />
                 <ScalarProperty Name="IdNota" ColumnName="IdNota" />
                 <ScalarProperty Name="DataHoraNota" ColumnName="DataHoraNota" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
@@ -595,6 +646,8 @@
           <EntitySetMapping Name="Pedido">
             <EntityTypeMapping TypeName="eatfitdados2Model.Pedido">
               <MappingFragment StoreEntitySet="Pedido">
+                <ScalarProperty Name="IdPedidoMobile" ColumnName="IdPedidoMobile" />
+                <ScalarProperty Name="IdNota" ColumnName="IdNota" />
                 <ScalarProperty Name="IdPedido" ColumnName="IdPedido" />
                 <ScalarProperty Name="QantidadePedido" ColumnName="QantidadePedido" />
                 <ScalarProperty Name="IdProduto" ColumnName="IdProduto" />
@@ -605,6 +658,7 @@
           <EntitySetMapping Name="Produto">
             <EntityTypeMapping TypeName="eatfitdados2Model.Produto">
               <MappingFragment StoreEntitySet="Produto">
+                <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="IdProduto" ColumnName="IdProduto" />
                 <ScalarProperty Name="NomeProduto" ColumnName="NomeProduto" />
                 <ScalarProperty Name="DescricaoProduto" ColumnName="DescricaoProduto" />

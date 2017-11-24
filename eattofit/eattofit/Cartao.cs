@@ -8,8 +8,9 @@ namespace eattofit
     {
         public int IdCartao { get; set; }
 
-        
         public string Bandeira { get; set; }
+
+        [Display(Name = "Imaagem")]
         public string ImagemUrl { get; set; }
         public Nullable<int> IdFornecedor { get; set; }
     

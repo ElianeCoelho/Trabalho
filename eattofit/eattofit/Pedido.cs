@@ -16,9 +16,12 @@ namespace eattofit
         public Nullable<int> QantidadePedido { get; set; }
         public Nullable<int> IdProduto { get; set; }
         public Nullable<decimal> ValorPedido { get; set; }
+        public Nullable<int> IdNota { get; set; }
+        public Nullable<int> IdPedidoMobile { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Nota> Nota { get; set; }
         public virtual Produto Produto { get; set; }
+        public virtual Nota Nota1 { get; set; }
     }
 }

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net;
 using PagedList;
 using System.Web.Mvc;
+using eattofit.Classes;
+using eattofit.Models;
 
 namespace eattofit.Controllers
 {
@@ -66,72 +68,14 @@ namespace eattofit.Controllers
 
             }
 
-            int quantidadePorPagina = 3;
+            int quantidadePorPagina = 10;
             int numeroPagina = (page ?? 1);
             return View(produtos.ToPagedList(numeroPagina, quantidadePorPagina));
 
         }
 
 
-
-        public ActionResult UploadImagem()
-        {
-            return View();
-        }
-
-
-
-
-
-        //[HttpPost]
-        //public async Task<ActionResult> UploadImagem(HttpPostedFileBase file)
-        //{
-        //    if (file != null && file.ContentLength > 0)
-        //    {
-        //        var user = await GetCurrentUserAsync();
-        //        var username = user.UserName;
-        //        var fileExt = Path.GetExtension(file.FileName);
-        //        var fnm = username + ".png";
-
-
-        //        if (fileExt.ToLower().EndsWith(".png") || fileExt.ToLower().EndsWith(".jpg") || fileExt.ToLower().EndsWith(".gif"))
-        //        {
-
-        //            var filePath = HostingEnvironment.MapPath("~/Content/foto") + fnm;
-        //            var diretorio = new DirectoryInfo(HostingEnvironment.MapPath("~/Content/foto"));
-        //            if (diretorio.Exists == false)
-        //            {
-        //                diretorio.Create();
-        //            }
-        //            ViewBag.FilePath = filePath.ToString();
-        //            file.SaveAs(filePath);
-        //            return RedirectToAction("Index", new { Message = ManageMessageId.PhotUploadSucess });
-
-        //        }
-        //        else
-        //        {
-        //            return RedirectToAction("Index", new { Message = ManageMessageId.FileExtensionError });
-
-        //        }
-
-
-        //    }
-
-        //    return RedirectToAction("Index", new { Message = ManageMessageId.Error });
-
-        //}
-
-        //public Task<ApplicationUser> GetCurrentUserAsync()
-        //{
-        //    return await UserManager.FindByIdAsync(User.Identity.GetUserId());
-        //}
-
-        //public enum ManageMessageId{
-        //    Error,
-        //    PhotUploadSucess,
-        //    FileExtensionError
-
-        //}
+        
 
 
         
@@ -161,24 +105,45 @@ namespace eattofit.Controllers
             return View();
         }
 
-        // POST: Produto/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProduto,NomeProduto,DescricaoProduto,ValorProduto,IdCategoria,IdFornecedor")] Produto produto)
+        public ActionResult Create(PodutoView view)
         {
             if (ModelState.IsValid)
             {
-                db.Produto.Add(produto);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+
+
+                    if (view.Imagem != null)
+                    {
+
+                        var pic = Utilidades.UploadImagem(view.Imagem);
+
+
+                        if (!string.IsNullOrEmpty(pic))
+                        {
+                            view.Produto.Url = string.Format("~/Arquivos/{0}", pic);
+                            db.Produto.Add(view.Produto);
+
+                            db.SaveChanges();
+
+                        }
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch (System.Exception ex)
+                {
+
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
             }
 
-            ViewBag.IdCategoria = new SelectList(db.Categoria, "IdCategoria", "DescriçãoCategoria", produto.IdCategoria);
-            ViewBag.IdFornecedor = new SelectList(db.Fornecedor, "IdFornecedor", "Nome", produto.IdFornecedor);
-            return View(produto);
+            ViewBag.IdCategoria = new SelectList(db.Categoria, "IdCategoria", "DescriçãoCategoria", view.Produto.IdCategoria);
+            ViewBag.IdFornecedor = new SelectList(db.Fornecedor, "IdFornecedor", "Nome", view.Produto.IdFornecedor);
+            return View(view);
         }
+
 
         // GET: Produto/Edit/5
         public ActionResult Edit(int? id)
@@ -240,6 +205,10 @@ namespace eattofit.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
+       
 
         protected override void Dispose(bool disposing)
         {

@@ -14,7 +14,7 @@ namespace eattofit
     
         public int IdCategoria { get; set; }
 
-        
+
         [Display(Name = "Categoria")]
         public string DescriçãoCategoria { get; set; }
     

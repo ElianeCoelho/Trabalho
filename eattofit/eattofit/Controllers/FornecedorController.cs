@@ -162,6 +162,44 @@ namespace eattofit.Controllers
             return View(fornecedor);
         }
 
+
+        public ActionResult EditEndereco(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Fornecedor fornecedor = db.Fornecedor.Find(id);
+            if (fornecedor == null)
+            {
+                return HttpNotFound();
+            }
+            
+            return View(fornecedor);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEndereco([Bind(Include = "IdEndereco, rua, numero,complemento, bairro,cidade,estado")] Endereco endereco)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(endereco).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(endereco);
+        }
+
+
+
+        
+
+
+
+
+
         // POST: Fornecedor/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

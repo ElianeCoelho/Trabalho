@@ -22,9 +22,9 @@
     </Key>
     <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Cpf" Type="varchar" MaxLength="11" />
+    <Property Name="Cpf" Type="varchar" MaxLength="16" />
     <Property Name="Cnpj" Type="varchar" MaxLength="13" />
-    <Property Name="Telefone" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="Telefone" Type="varchar" MaxLength="20" />
     <Property Name="Email" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="Senha" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
@@ -40,6 +40,7 @@
     <Property Name="Bairro" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="Cidade" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="IdEnderecoMobile" Type="int" />
   </EntityType>
   <EntityType Name="Fornecedor">
     <Key>
@@ -67,6 +68,9 @@
     <Property Name="IdPedido" Type="int" />
     <Property Name="IdEndereco" Type="int" />
     <Property Name="FormaPagamento" Type="varchar" MaxLength="50" />
+    <Property Name="CpfCliente" Type="varchar" MaxLength="16" />
+    <Property Name="IdPedidoMobile" Type="int" />
+    <Property Name="IdEnderecoMobile" Type="int" />
   </EntityType>
   <EntityType Name="Pedido">
     <Key>
@@ -76,6 +80,8 @@
     <Property Name="QantidadePedido" Type="int" />
     <Property Name="IdProduto" Type="int" />
     <Property Name="ValorPedido" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="IdNota" Type="int" />
+    <Property Name="IdPedidoMobile" Type="int" />
   </EntityType>
   <EntityType Name="Produto">
     <Key>
@@ -87,6 +93,7 @@
     <Property Name="ValorProduto" Type="decimal" Precision="8" Scale="2" />
     <Property Name="IdCategoria" Type="int" />
     <Property Name="IdFornecedor" Type="int" />
+    <Property Name="Url" Type="varchar" MaxLength="200" />
   </EntityType>
   <Association Name="FK__Cartao__IdFornec__73BA3083">
     <End Role="Fornecedor" Type="Self.Fornecedor" Multiplicity="0..1" />
@@ -160,6 +167,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Pedido__IdNota__02084FDA">
+    <End Role="Nota" Type="Self.Nota" Multiplicity="0..1" />
+    <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nota">
+        <PropertyRef Name="IdNota" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="IdNota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Pedido__IdProdut__6B24EA82">
     <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
     <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
@@ -228,6 +247,10 @@
     <AssociationSet Name="FK__Nota__IdPedido__6FE99F9F" Association="Self.FK__Nota__IdPedido__6FE99F9F">
       <End Role="Pedido" EntitySet="Pedido" />
       <End Role="Nota" EntitySet="Nota" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pedido__IdNota__02084FDA" Association="Self.FK__Pedido__IdNota__02084FDA">
+      <End Role="Nota" EntitySet="Nota" />
+      <End Role="Pedido" EntitySet="Pedido" />
     </AssociationSet>
     <AssociationSet Name="FK__Pedido__IdProdut__6B24EA82" Association="Self.FK__Pedido__IdProdut__6B24EA82">
       <End Role="Produto" EntitySet="Produto" />

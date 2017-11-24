@@ -1,134 +1,40 @@
 ﻿@model IEnumerable<eattofit.Fornecedor>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ListaFornecedor";
 }
 
-<h3 style="text-align:center">Perfil</h3>
+<h3 style="text-align: center; margin-top:60px;">Dados da Empresa</h3>
 
-
-<table class="table">
+<table class="table" style="margin-top: 80px">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Cpf)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cnpj)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.RazaoSocial)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Telefone)
         </th>
-        
-
+       
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cpf)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cnpj)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RazaoSocial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-           
-
-
-
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.IdFornecedor })<br/>
-               
-            </td>
-        </tr>
-    }
-
-</table>
-
-<br/>
-
-
-<p>_______________________________________________________________________________________________________________________________</p>
-
-<h3 style="text-align:center">Endereço</h3>
-<table class="table">
-<tr>
-    
-    <th>
-        @Html.DisplayNameFor(model => model.Endereco.Cep)
-    </th>
-
-    <th>
-        @Html.DisplayNameFor(model => model.Endereco.Rua)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.Endereco.Numero)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.Endereco.Bairro)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.Endereco.Cidade)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.Endereco.Estado)
-    </th>
-
-
-    <th></th>
-</tr>
-
-@foreach (var item in Model)
-{
-    <tr><td>
-            @Html.DisplayFor(modelItem => item.Endereco.Cep)
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RazaoSocial)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Endereco.Rua)
+            @Html.DisplayFor(modelItem => item.Telefone)
         </td>
+        
+        
         <td>
-            @Html.DisplayFor(modelItem => item.Endereco.Numero)
+            @Html.ActionLink("Detalhes", "Details", new { id = item.IdFornecedor }, new { @class = "btn btn-default" })&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco.Bairro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco.Cidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco.Estado)
-        </td>
-
 
 
     </tr>
 }
 
-
-    <td>
-        @Html.ActionLink("Editar", "Create", "Endereco")<br />
-
-    </td>
-    </table>
+</table>

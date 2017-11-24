@@ -59,7 +59,7 @@ namespace eattofit.Controllers
                 f.IdEndereco = endereco.IdEndereco;
 
                 db.Entry(f).State = EntityState.Modified;
-
+                
                 db.SaveChanges();
 
                 return RedirectToAction("Index", "Fornecedor");

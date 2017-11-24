@@ -162,6 +162,7 @@
     <Compile Include="Categoria.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Utilidades.cs" />
     <Compile Include="Cliente.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -172,7 +173,6 @@
     <Compile Include="Controllers\FormularioContatoController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NotaController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Endereco.cs">
@@ -202,6 +202,7 @@
     <Compile Include="Models\CustomValidationCPFAttribute.cs" />
     <Compile Include="Models\FormularioContato.cs" />
     <Compile Include="Models\Imagem.cs" />
+    <Compile Include="Models\PodutoView.cs" />
     <Compile Include="Nota.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -214,6 +215,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Arquivos\lasanhaVegana.jpg" />
+    <Content Include="Arquivos\pizzaVegana.jpg" />
+    <Content Include="Arquivos\teste.gif" />
+    <Content Include="Arquivos\torta.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\Style.css" />
@@ -303,9 +308,6 @@
     <Content Include="Views\Endereco\Edit.cshtml" />
     <Content Include="Views\Endereco\Index.cshtml" />
     <Content Include="Views\Produto\Create.cshtml" />
-    <Content Include="Views\Produto\Delete.cshtml" />
-    <Content Include="Views\Produto\Details.cshtml" />
-    <Content Include="Views\Produto\Edit.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Views\Fornecedor\Create.cshtml" />
     <Content Include="Views\Fornecedor\Delete.cshtml" />
@@ -313,17 +315,23 @@
     <Content Include="Views\Fornecedor\Edit.cshtml" />
     <Content Include="Views\Fornecedor\Index.cshtml" />
     <Content Include="Views\Fornecedor\Login.cshtml" />
-    <Content Include="Views\Fornecedor\ListaFornecedor.cshtml" />
     <Content Include="Views\Cliente\ListaClientes.cshtml" />
-    <Content Include="Views\Pedido\ListaPedidos.cshtml" />
     <Content Include="Views\Produto\UploadImagem.cshtml" />
     <Content Include="Views\FormularioContato\formulario.cshtml" />
     <Content Include="Views\FormularioContato\Index.cshtml" />
+    <Content Include="Views\Produto\Edit.cshtml" />
+    <Content Include="Views\Produto\Delete.cshtml" />
+    <Content Include="Views\Fornecedor\ListaFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\EditEndereco.cshtml" />
+    <Content Include="Views\Pedido\Create.cshtml" />
+    <Content Include="Views\Pedido\Delete.cshtml" />
+    <Content Include="Views\Pedido\Details.cshtml" />
+    <Content Include="Views\Pedido\Edit.cshtml" />
+    <Content Include="Views\Pedido\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\fotos\" />
-    <Folder Include="Views\Nota\" />
     <Folder Include="Views\UploadDeImagem\" />
   </ItemGroup>
   <ItemGroup>

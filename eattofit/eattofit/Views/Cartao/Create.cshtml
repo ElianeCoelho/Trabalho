@@ -11,8 +11,39 @@
 {
     @Html.AntiForgeryToken()
     
+
+    
     <div class="form-horizontal">
         <h4>Cartao</h4>
+
+        <p style="margin-left:200px"> Selecione os Cartões que Aceita </p>
+
+        <div class="form-group" style="margin-left:200px">
+
+            <div class="checkbox">
+
+                <input id="Elo" type="checkbox" value="cpf" name="cpf"><b>Elo</b>
+
+            </div>
+            <div class="checkbox">
+                <input id="mostrarCnpj" type="checkbox" value="cnpj" name="cnpj"><b>Mastercard</b>
+            </div>
+            
+            <div class="checkbox">
+                <input id="mostrarCnpj" type="checkbox" value="cnpj" name="cnpj"><b>Visa</b>
+            </div>
+
+            <div class="checkbox">
+                <input id="mostrarCnpj" type="checkbox" value="cnpj" name="cnpj"><b>VR</b>
+            </div>
+
+        </div>
+
+        
+
+
+
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -38,7 +69,7 @@
                 @Html.ValidationMessageFor(model => model.IdFornecedor, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

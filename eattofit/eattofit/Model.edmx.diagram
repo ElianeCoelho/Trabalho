@@ -22,6 +22,7 @@
         <AssociationConnector Association="eatfitdados2Model.FK__Produto__IdForne__5629CD9C" ManuallyRouted="false" />
         <AssociationConnector Association="eatfitdados2Model.FK__Nota__IdPedido__6FE99F9F" ManuallyRouted="false" />
         <AssociationConnector Association="eatfitdados2Model.FK__Pedido__IdProdut__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="eatfitdados2Model.FK__Pedido__IdNota__02084FDA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

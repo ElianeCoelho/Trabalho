@@ -41,6 +41,10 @@
                 @Html.ActionLink("Categoria do Produto", "Index", new { sortOrder = ViewBag.CategoriaParam })
             </th>
            
+            <th>
+                @Html.ActionLink("Foto", "Index", new { sortOrder = ViewBag.UrlParam })
+            </th>
+
             <th></th>
         </tr>
 
@@ -59,7 +63,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Categoria.DescriçãoCategoria)
                 </td>
-                
+
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Url))
+                {
+                        <img src="@Url.Content(item.Url)" alt="Image" style="width:100px; height:100px; max-width:100%; height:auto" />
+                    }
+                </td>
                 <td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.IdProduto }) |
                     @Html.ActionLink("Deletar", "Delete", new { id = item.IdProduto })
