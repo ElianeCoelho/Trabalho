@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using eattofit;
-using System.Web.Security;
+
 
 namespace eattofit.Controllers
 {
@@ -84,13 +80,22 @@ namespace eattofit.Controllers
         {
 
 
+            if (Session["IdFornecedor"] != null)
+            {
 
-           int idSessao = int.Parse(Session["IdFornecedor"].ToString());
+                int idSessao = int.Parse(Session["IdFornecedor"].ToString());
 
-            var filtro = from f in db.Fornecedor where f.IdFornecedor == idSessao select f;
+                var filtro = from f in db.Fornecedor where f.IdFornecedor == idSessao select f;
 
 
-            return View(filtro);
+                return View(filtro);
+
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+
         }
 
 

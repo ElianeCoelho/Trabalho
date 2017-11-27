@@ -13,7 +13,19 @@ namespace eattofit.Controllers
         // GET: Enderecoes
         public ActionResult Index()
         {
-            return View(db.Endereco.ToList());
+
+            if (Session["IdFornecedor"] != null)
+            {
+                return View(db.Endereco.ToList());
+
+            }
+            else
+            {
+                return RedirectToAction("Login", "Fornecedor");
+            }
+
+
+            
         }
 
         // GET: Enderecoes/Details/5

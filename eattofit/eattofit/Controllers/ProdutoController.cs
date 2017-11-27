@@ -23,54 +23,69 @@ namespace eattofit.Controllers
 
         public ActionResult Index(String sortOrder, string currentFilter, string searchString, int? page)
         {
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.NomeParam = String.IsNullOrEmpty(sortOrder) ? "NomeProduto" : "";
-            ViewBag.DescricaoParam = String.IsNullOrEmpty(sortOrder) ? "Descricao" : "";
-            ViewBag.ValorParam = String.IsNullOrEmpty(sortOrder) ? "Valor" : "";
-            ViewBag.CategoriaParam = String.IsNullOrEmpty(sortOrder) ? "Categoria" : "";
 
-            if (searchString != null)
+
+            if (Session["IdFornecedor"] != null)
             {
-                page = 1;
+
+
+
+                ViewBag.CurrentSort = sortOrder;
+                ViewBag.NomeParam = String.IsNullOrEmpty(sortOrder) ? "NomeProduto" : "";
+                ViewBag.DescricaoParam = String.IsNullOrEmpty(sortOrder) ? "Descricao" : "";
+                ViewBag.ValorParam = String.IsNullOrEmpty(sortOrder) ? "Valor" : "";
+                ViewBag.CategoriaParam = String.IsNullOrEmpty(sortOrder) ? "Categoria" : "";
+
+                if (searchString != null)
+                {
+                    page = 1;
+
+                }
+                else
+                {
+                    searchString = currentFilter;
+
+                }
+
+                ViewBag.CurrentFilter = searchString;
+
+                var produtos = from s in db.Produto select s;
+
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    produtos = produtos.Where(s => s.NomeProduto.ToUpper().Contains(searchString.ToUpper()));
+                }
+
+                switch (sortOrder)
+                {
+                    case "NomeProduto":
+                        produtos = produtos.OrderByDescending(s => s.NomeProduto);
+
+                        break;
+
+                    case "Categoria":
+                        produtos = produtos.OrderByDescending(s => s.Categoria);
+
+                        break;
+
+                    default:
+                        produtos = produtos.OrderBy(s => s.NomeProduto);
+                        break;
+
+                }
+
+                int quantidadePorPagina = 10;
+                int numeroPagina = (page ?? 1);
+                return View(produtos.ToPagedList(numeroPagina, quantidadePorPagina));
+
 
             }
             else
             {
-                searchString = currentFilter;
-
+                return RedirectToAction("Login", "Fornecedor");
             }
 
-            ViewBag.CurrentFilter = searchString;
-
-            var produtos = from s in db.Produto select s;
-
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                produtos = produtos.Where(s => s.NomeProduto.ToUpper().Contains(searchString.ToUpper()));
-            }
-
-            switch (sortOrder)
-            {
-                case "NomeProduto":
-                    produtos = produtos.OrderByDescending(s => s.NomeProduto);
-
-                    break;
-
-                case "Categoria":
-                    produtos = produtos.OrderByDescending(s => s.Categoria);
-
-                    break;
-
-                default:
-                    produtos = produtos.OrderBy(s => s.NomeProduto);
-                    break;
-
-            }
-
-            int quantidadePorPagina = 10;
-            int numeroPagina = (page ?? 1);
-            return View(produtos.ToPagedList(numeroPagina, quantidadePorPagina));
 
         }
 
@@ -100,9 +115,20 @@ namespace eattofit.Controllers
         // GET: Produto/Create
         public ActionResult Create()
         {
-            ViewBag.IdCategoria = new SelectList(db.Categoria, "IdCategoria", "DescriçãoCategoria");
-            ViewBag.IdFornecedor = new SelectList(db.Fornecedor, "IdFornecedor", "Nome");
-            return View();
+
+
+            if (Session["IdFornecedor"] != null)
+            {
+
+                ViewBag.IdCategoria = new SelectList(db.Categoria, "IdCategoria", "DescriçãoCategoria");
+                ViewBag.IdFornecedor = new SelectList(db.Fornecedor, "IdFornecedor", "Nome");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Fornecedor");
+            }
+
         }
 
         [HttpPost]
@@ -111,6 +137,7 @@ namespace eattofit.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 try
                 {
 

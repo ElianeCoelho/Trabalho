@@ -19,7 +19,17 @@ namespace eattofit.Controllers
        
         public ActionResult ListaClientes()
         {
-            return View(db.Cliente.ToList());
+            if (Session["IdFornecedor"] != null)
+            {
+                return View(db.Cliente.ToList());
+
+            }
+            else
+            {
+                return RedirectToAction("Login", "Fornecedor");
+            }
+
+            
         }
 
 

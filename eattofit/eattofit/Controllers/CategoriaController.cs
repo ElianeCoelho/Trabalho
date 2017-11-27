@@ -17,7 +17,18 @@ namespace eattofit.Controllers
         // GET: Categoria
         public ActionResult ListaCategorias()
         {
-            return View(db.Categoria.ToList());
+
+            if (Session["IdFornecedor"] != null)
+            {
+                return View(db.Categoria.ToList());
+
+            }
+            else
+            {
+                return RedirectToAction("Login", "Fornecedor");
+            }
+
+            
         }
 
        

@@ -17,8 +17,20 @@ namespace eattofit.Controllers
         // GET: Cartao
         public ActionResult Index()
         {
-            var cartao = db.Cartao.Include(c => c.Fornecedor);
-            return View(cartao.ToList());
+
+
+
+            if (Session["IdFornecedor"] != null)
+            {
+
+                var cartao = db.Cartao.Include(c => c.Fornecedor);
+                return View(cartao.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Fornecedor");
+            }
+
         }
 
         // GET: Cartao/Details/5

@@ -17,8 +17,19 @@ namespace eattofit.Controllers
         // GET: Pedido
         public ActionResult Index()
         {
-            var pedido = db.Pedido.Include(p => p.Produto).Include(p => p.Nota1);
-            return View(pedido.ToList());
+
+
+
+            if (Session["IdFornecedor"] != null)
+            {
+                var pedido = db.Pedido.Include(p => p.Produto).Include(p => p.Nota1);
+                return View(pedido.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Fornecedor");
+            }
+            
         }
 
         // GET: Pedido/Details/5
