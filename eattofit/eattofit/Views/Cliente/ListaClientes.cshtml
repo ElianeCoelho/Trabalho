@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "ListaClientes";
 }
-@if (Session["IdFornecedor"] != null)
-{
-
-    <h2>Bem Vindo @Session["Email"].ToString()</h2>
-
-    <h2 style="text-align:center">Seus Clientes</h2>
 
 
-    <table class="table">
+    <h3 style="text-align:center">Seus Clientes</h3>
+
+
+    <table class="table" style="margin-top:50px">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
@@ -56,11 +53,4 @@
 
     </table>
 
-
-}
-else
-{
-    <p style="text-align:center">Faça o login para ter acesso ao conteúdo</p>
-
-}
 

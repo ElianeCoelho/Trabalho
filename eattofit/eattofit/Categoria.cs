@@ -11,11 +11,12 @@ namespace eattofit
         {
             this.Produto = new HashSet<Produto>();
         }
-    
+
+        
         public int IdCategoria { get; set; }
 
 
-        [Display(Name = "Categoria")]
+        [Display(Name = "Descrição Categoria")]
         public string DescriçãoCategoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

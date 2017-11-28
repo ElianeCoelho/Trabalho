@@ -13,12 +13,24 @@ namespace eattofit
         }
     
         public int IdNota { get; set; }
+
+        [Display(Name = "Data Compra")]
         public Nullable<System.DateTime> DataHoraNota { get; set; }
+        [Display(Name = "Cliente")]
         public Nullable<int> IdCliente { get; set; }
+
         public Nullable<int> IdFornecedor { get; set; }
+
+        [Display(Name = "Número Pedido")]
         public Nullable<int> IdPedido { get; set; }
+
+      
         public Nullable<int> IdEndereco { get; set; }
+
+        [Display(Name = "Forma de Pagameto")]
         public string FormaPagamento { get; set; }
+
+
         public string CpfCliente { get; set; }
         public Nullable<int> IdPedidoMobile { get; set; }
         public Nullable<int> IdEnderecoMobile { get; set; }

@@ -4,25 +4,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h3 style="text-align:center; margin-top:30px">Lista de Pedidos Realizados no App</h3>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+
+<table class="table" style="margin-top:50px">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.QantidadePedido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorPedido)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Nota1.DataHoraNota)
         </th>
+        
+        <th>
+            Cliente
+        </th>
+
+        
         <th>
             @Html.DisplayNameFor(model => model.Produto.NomeProduto)
         </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.ValorPedido)
+        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Nota1.FormaPagamento)
         </th>
@@ -32,18 +36,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.QantidadePedido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorPedido)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Nota1.DataHoraNota)
         </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Nota1.Cliente.Nome)
+        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Produto.NomeProduto)
         </td>
+
         <td>
+            @Html.DisplayFor(modelItem => item.ValorPedido)
+        </td>
+         <td>
             @Html.DisplayFor(modelItem => item.Nota1.FormaPagamento)
         </td>
        
