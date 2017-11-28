@@ -1,0 +1,168 @@
+﻿@model eattofit.Fornecedor
+<h2>Cadastro</h2>
+
+
+<head>
+
+    <script type="text/javascript" src="~/Scripts/jquery-3.2.1.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("div#DivCpf").hide();
+            $("div#DivCnpj").hide();
+
+            $("input[name = cpf]").on("click", function () {
+
+                var selectedValue = $("input[name=cpf]:checked").val();
+
+                if (selectedValue == "cpf") {
+
+                    $("div#DivCpf").show();
+                } else {
+                    $("div#DivCpf").hide();
+
+                }
+
+            });
+        
+
+        $("input[name = cnpj]").on("click", function () {
+
+            var selectedValue = $("input[name=cnpj]:checked").val();
+
+            if (selectedValue == "cnpj") {
+
+                $("div#DivCnpj").show();
+            } else {
+                $("div#DivCnpj").hide();
+
+            }
+
+        });
+        });
+
+    </script>
+
+
+
+
+</head>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        
+        
+        <p style="margin-left:200px"> Quer Iniciar Cadastro Como: </p>
+
+        <div class="form-group" style="margin-left:200px">
+
+            <div class="checkbox">
+
+                <input id="mostrarCpf" type="checkbox" value="cpf" name="cpf"><b>Pessoa Física</b>
+            </div>
+            <div class="checkbox">
+                <input id="mostrarCnpj" type="checkbox" value="cnpj" name="cnpj"><b>Pessoa Jurídica</b>
+            </div>
+
+        </div>
+
+        
+
+            <div id="DivCnpj" class="form-group">
+                @Html.LabelFor(model => model.Cnpj, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cnpj, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cnpj, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div id="DivCpf" class="form-group">
+                @Html.LabelFor(model => model.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RazaoSocial, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RazaoSocial, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RazaoSocial, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ConfirmaSenha, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Próximo" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/scripts/CustomValidation.js")
+}

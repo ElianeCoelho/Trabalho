@@ -1,0 +1,212 @@
+﻿#menuFornecedor {
+    height: 100px;
+    width: 380px;
+}
+
+
+.jumbotron {
+    height: 230px;
+    width: 380px;
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #FFFFFF url(../../Imagens/img1.gif) repeat-x;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #3D515C;
+}
+
+img {
+    border: none;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+    letter-spacing: -1px;
+    font-weight: normal;
+    font-style: italic;
+    color: #8B4726;
+}
+
+p, ul, ol {
+    margin-top: 0;
+    padding-top: 0;
+    line-height: 150%;
+}
+
+ul, ol {
+    color: #8F3844;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+ol {
+    margin-left: 0;
+    padding-left: 1em;
+}
+
+a:link, a:active {
+    text-decoration: none;
+    color: #8F3844;
+}
+
+a:visited, a:hover {
+    text-decoration: underline;
+    color: #3D515C;
+}
+
+/* Header */
+
+#header {
+    height: 116px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    background: url(../../Imagens/img1.png) no-repeat center bottom;
+}
+
+
+
+
+#classContainerSobreNos {
+    /* padding-bottom: 35%; 540/720 */
+    position: absolute;
+    left: 40%;
+    margin-top: 30px;
+}
+
+
+        
+   
+
+#header * {
+    text-align: center;
+    text-decoration: none;
+    color: #8F3844;
+}
+
+    #header h1 {
+        letter-spacing: -2px;
+        font-size: 48px;
+    }
+
+    #header h2 {
+        letter-spacing: normal;
+        font-size: 12px;
+    }
+
+/* Content */
+
+
+
+#content {
+    width: 700px;
+    margin: 0 auto;
+}
+
+#colOne {
+    float: right;
+    width: 240px;
+}
+
+#colOneFornecedor {
+    float: right;
+    width: 440px;
+}
+
+
+#colTwo {
+    float: left;
+    width: 440px;
+}
+
+#colTwoFornecedor {
+    float: left;
+    width: 240px;
+}
+/* Footer */
+#footer {
+    clear: both;
+    padding: 20px;
+    background: #F5EDEE url(../../Imagens/img1.gif) repeat-x 0px -120px;
+}
+
+    #footer p {
+        margin: 0;
+        text-align: center;
+        font-size: 11px;
+    }
+
+/* Boxed */
+
+.boxed .title {
+    margin: 0;
+    padding: 0;
+}
+
+.boxed .content {
+    padding: 20px;
+    background: url(../../Imagens/img3) repeat-x;
+}
+
+
+
+
+
+.boxed .image {
+    float: left;
+    margin: 5px 20px 0 0;
+}
+
+
+
+
+
+.form-login {
+    max-width: 450px;
+    max-height: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border-color: #006400;
+    margin-top: 5%;
+}
+
+    .form-login input {
+        margin-bottom: 10px;
+    }
+
+
+#classContainerSobreNos {
+    background-image: url(../../Imagens/imgFolhas2.png);
+    height: 400px;
+    width: auto;
+    position: relative;
+}
+
+#classContainerSobreNos2 {
+    max-width: 800px;
+    max-height: 150px;
+    vertical-align: middle;
+}
+
+/*#DivCpf{
+    visibility:hidden;
+    display:none;
+}
+
+#DivCnpj {
+    
+    display: none;
+}*/
+
+
+

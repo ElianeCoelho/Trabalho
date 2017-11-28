@@ -151,6 +151,8 @@ namespace eattofit.Controllers
                         if (!string.IsNullOrEmpty(pic))
                         {
                             view.Produto.Url = string.Format("~/Arquivos/{0}", pic);
+                            view.Produto.IdCategoria = 1;
+
                             db.Produto.Add(view.Produto);
 
                             db.SaveChanges();

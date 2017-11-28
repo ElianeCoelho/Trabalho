@@ -1,0 +1,117 @@
+﻿@model eattofit.Fornecedor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3 style="text-align:center">Detalhes</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+
+            Represetante       
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+        
+
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            Enpresa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RazaoSocial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Cep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Rua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Numero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Bairro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Estado)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Alterar", "Edit", new { id = Model.IdFornecedor}, new { @class="btn btn-default"})  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+    @Html.ActionLink("Alterar Endereço", "EditEndereco", new { id = Model.IdFornecedor }, new { @class = "btn btn-default" })  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+    @Html.ActionLink("Retornar a Tela Anterior", "ListaFornecedor","", new { @class = "btn btn-default"})
+</p>

@@ -43,6 +43,7 @@ namespace eattofit
 
         [Display(Name = "Imagem")]
         [DataType(DataType.ImageUrl)]
+        [Required(ErrorMessage = "Obrigatório Selecionar Imagem")]
         public string Url { get; set; }
     
         public virtual Categoria Categoria { get; set; }

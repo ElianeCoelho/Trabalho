@@ -1,0 +1,52 @@
+﻿@model IEnumerable<eattofit.Fornecedor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="content">
+    <div id="colOneFornecedor">
+
+        <div id="menuFornecedor" class="jumbotron">
+            <h2>Menu do Negócio</h2>
+        </div>
+
+
+        <div class="jumbotron">
+            <ul>
+                <li>@Html.ActionLink("Gerenciar Produtos", "Index", "Produto")</li>
+                <li>@Html.ActionLink("Vizualizar Clientes", "ListaClientes", "Cliente")</li>
+                <li>@Html.ActionLink("Histórico de Vendas", "Index", "Pedido")</li>
+            </ul>
+
+
+        </div>
+    </div>
+
+
+    <div id="colTwoFornecedor">
+
+        <div id="menuFornecedor" class="jumbotron">
+            <h2>Menu Pessoal</h2>
+
+
+        </div>
+        <div class="jumbotron">
+            <ul>
+                <li>@Html.ActionLink("Perfil", "ListaFornecedor", "Fornecedor")</li>
+                <li>@Html.ActionLink("Sair", "EncerrarSessao", "Fornecedor")</li>
+
+            </ul>
+
+            @*<form id="form1" runat="server">
+                    <asp:LoginStatus id="LoginStatus1" runat="server"
+                                     LogoutAction="RedirectToLoginPage" />
+                    <input type="submit" value="Sair" class="btn btn-default" />
+                </form>*@
+
+
+        </div>
+    </div>
+</div>
+

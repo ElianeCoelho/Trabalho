@@ -1,0 +1,42 @@
+﻿@model eattofit.Cartao
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cartao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bandeira)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bandeira)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagemUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagemUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fornecedor.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fornecedor.Nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCartao }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

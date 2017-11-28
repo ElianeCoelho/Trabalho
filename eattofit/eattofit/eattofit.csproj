@@ -216,8 +216,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Arquivos\lasanhaVegana.jpg" />
+    <Content Include="Arquivos\panquecaVegana.jpg" />
     <Content Include="Arquivos\pizzaVegana.jpg" />
-    <Content Include="Arquivos\teste.gif" />
     <Content Include="Arquivos\torta.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -230,9 +230,12 @@
     <Content Include="Imagens\elo.png" />
     <Content Include="Imagens\fundoSobreNos.png" />
     <Content Include="Imagens\fundoSobreNos3.png" />
+    <Content Include="Imagens\iconPerfil.png" />
+    <Content Include="Imagens\iconNegocio.png" />
     <Content Include="Imagens\img1.gif" />
     <Content Include="Imagens\imgFolhas.jpg" />
     <Content Include="Imagens\img3.gif" />
+    <Content Include="Imagens\imgPerfil.jpg" />
     <Content Include="Imagens\logoSNome.png" />
     <Content Include="Imagens\mastercard.png" />
     <Content Include="Imagens\refeicao.png" />
@@ -263,6 +266,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Properties\PublishProfiles\eat2fit - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

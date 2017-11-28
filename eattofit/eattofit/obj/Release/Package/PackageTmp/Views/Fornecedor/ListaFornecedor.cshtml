@@ -1,0 +1,40 @@
+﻿@model IEnumerable<eattofit.Fornecedor>
+
+@{
+    ViewBag.Title = "ListaFornecedor";
+}
+
+<h3 style="text-align: center; margin-top:60px;">Dados da Empresa</h3>
+
+<table class="table" style="margin-top: 80px">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RazaoSocial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RazaoSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        
+        
+        <td>
+            @Html.ActionLink("Detalhes", "Details", new { id = item.IdFornecedor }, new { @class = "btn btn-default" })&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+        </td>
+
+
+    </tr>
+}
+
+</table>

@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eatfitdados2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cartao">
+    <Key>
+      <PropertyRef Name="IdCartao" />
+    </Key>
+    <Property Name="IdCartao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bandeira" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ImagemUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IdFornecedor" Type="Int32" />
+    <NavigationProperty Name="Fornecedor" Relationship="Self.FK__Cartao__IdFornec__73BA3083" FromRole="Cartao" ToRole="Fornecedor" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescriçãoCategoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK__Produto__IdCateg__5535A963" FromRole="Categoria" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cpf" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Cnpj" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Senha" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Nota" Relationship="Self.FK__Nota__IdCliente__6E01572D" FromRole="Cliente" ToRole="Nota" />
+  </EntityType>
+  <EntityType Name="Endereco">
+    <Key>
+      <PropertyRef Name="IdEndereco" />
+    </Key>
+    <Property Name="IdEndereco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rua" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Numero" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Complemento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Cep" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Bairro" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cidade" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Fornecedor" Relationship="Self.FK__Fornecedo__IdEnd__4BAC3F29" FromRole="Endereco" ToRole="Fornecedor" />
+    <NavigationProperty Name="Nota" Relationship="Self.FK__Nota__IdEndereco__70DDC3D8" FromRole="Endereco" ToRole="Nota" />
+    <Property Name="IdEnderecoMobile" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Fornecedor">
+    <Key>
+      <PropertyRef Name="IdFornecedor" />
+    </Key>
+    <Property Name="IdFornecedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cpf" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Cnpj" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Telefone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RazaoSocial" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Senha" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ConfirmaSenha" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdEndereco" Type="Int32" />
+    <NavigationProperty Name="Cartao" Relationship="Self.FK__Cartao__IdFornec__73BA3083" FromRole="Fornecedor" ToRole="Cartao" />
+    <NavigationProperty Name="Endereco" Relationship="Self.FK__Fornecedo__IdEnd__4BAC3F29" FromRole="Fornecedor" ToRole="Endereco" />
+    <NavigationProperty Name="Nota" Relationship="Self.FK__Nota__IdForneced__6EF57B66" FromRole="Fornecedor" ToRole="Nota" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK__Produto__IdForne__5629CD9C" FromRole="Fornecedor" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="Nota">
+    <Key>
+      <PropertyRef Name="IdNota" />
+    </Key>
+    <Property Name="IdNota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DataHoraNota" Type="DateTime" Precision="3" />
+    <Property Name="IdCliente" Type="Int32" />
+    <Property Name="IdFornecedor" Type="Int32" />
+    <Property Name="IdPedido" Type="Int32" />
+    <Property Name="IdEndereco" Type="Int32" />
+    <Property Name="FormaPagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Nota__IdCliente__6E01572D" FromRole="Nota" ToRole="Cliente" />
+    <NavigationProperty Name="Endereco" Relationship="Self.FK__Nota__IdEndereco__70DDC3D8" FromRole="Nota" ToRole="Endereco" />
+    <NavigationProperty Name="Fornecedor" Relationship="Self.FK__Nota__IdForneced__6EF57B66" FromRole="Nota" ToRole="Fornecedor" />
+    <NavigationProperty Name="Pedido" Relationship="Self.FK__Nota__IdPedido__6FE99F9F" FromRole="Nota" ToRole="Pedido" />
+    <Property Name="CpfCliente" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="IdPedidoMobile" Type="Int32" />
+    <Property Name="IdEnderecoMobile" Type="Int32" />
+    <NavigationProperty Name="Pedido1" Relationship="eatfitdados2Model.FK__Pedido__IdNota__02084FDA" FromRole="Nota" ToRole="Pedido" />
+  </EntityType>
+  <EntityType Name="Pedido">
+    <Key>
+      <PropertyRef Name="IdPedido" />
+    </Key>
+    <Property Name="IdPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QantidadePedido" Type="Int32" />
+    <Property Name="IdProduto" Type="Int32" />
+    <Property Name="ValorPedido" Type="Decimal" Precision="8" Scale="2" />
+    <NavigationProperty Name="Nota" Relationship="Self.FK__Nota__IdPedido__6FE99F9F" FromRole="Pedido" ToRole="Nota" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK__Pedido__IdProdut__6B24EA82" FromRole="Pedido" ToRole="Produto" />
+    <Property Name="IdNota" Type="Int32" />
+    <Property Name="IdPedidoMobile" Type="Int32" />
+    <NavigationProperty Name="Nota1" Relationship="eatfitdados2Model.FK__Pedido__IdNota__02084FDA" FromRole="Pedido" ToRole="Nota" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="IdProduto" />
+    </Key>
+    <Property Name="IdProduto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomeProduto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DescricaoProduto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ValorProduto" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="IdCategoria" Type="Int32" />
+    <Property Name="IdFornecedor" Type="Int32" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK__Produto__IdCateg__5535A963" FromRole="Produto" ToRole="Categoria" />
+    <NavigationProperty Name="Fornecedor" Relationship="Self.FK__Produto__IdForne__5629CD9C" FromRole="Produto" ToRole="Fornecedor" />
+    <NavigationProperty Name="Pedido" Relationship="Self.FK__Pedido__IdProdut__6B24EA82" FromRole="Produto" ToRole="Pedido" />
+    <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Cartao__IdFornec__73BA3083">
+    <End Role="Fornecedor" Type="Self.Fornecedor" Multiplicity="0..1" />
+    <End Role="Cartao" Type="Self.Cartao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedor">
+        <PropertyRef Name="IdFornecedor" />
+      </Principal>
+      <Dependent Role="Cartao">
+        <PropertyRef Name="IdFornecedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Produto__IdCateg__5535A963">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Nota__IdCliente__6E01572D">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Nota">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fornecedo__IdEnd__4BAC3F29">
+    <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+    <End Role="Fornecedor" Type="Self.Fornecedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Endereco">
+        <PropertyRef Name="IdEndereco" />
+      </Principal>
+      <Dependent Role="Fornecedor">
+        <PropertyRef Name="IdEndereco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Nota__IdEndereco__70DDC3D8">
+    <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+    <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Endereco">
+        <PropertyRef Name="IdEndereco" />
+      </Principal>
+      <Dependent Role="Nota">
+        <PropertyRef Name="IdEndereco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Nota__IdForneced__6EF57B66">
+    <End Role="Fornecedor" Type="Self.Fornecedor" Multiplicity="0..1" />
+    <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedor">
+        <PropertyRef Name="IdFornecedor" />
+      </Principal>
+      <Dependent Role="Nota">
+        <PropertyRef Name="IdFornecedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Produto__IdForne__5629CD9C">
+    <End Role="Fornecedor" Type="Self.Fornecedor" Multiplicity="0..1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedor">
+        <PropertyRef Name="IdFornecedor" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="IdFornecedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Nota__IdPedido__6FE99F9F">
+    <End Role="Pedido" Type="Self.Pedido" Multiplicity="0..1" />
+    <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pedido">
+        <PropertyRef Name="IdPedido" />
+      </Principal>
+      <Dependent Role="Nota">
+        <PropertyRef Name="IdPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pedido__IdProdut__6B24EA82">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="IdProduto" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="IdProduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="eatfitdados2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cartao" EntityType="Self.Cartao" />
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Endereco" EntityType="Self.Endereco" />
+    <EntitySet Name="Fornecedor" EntityType="Self.Fornecedor" />
+    <EntitySet Name="Nota" EntityType="Self.Nota" />
+    <EntitySet Name="Pedido" EntityType="Self.Pedido" />
+    <EntitySet Name="Produto" EntityType="Self.Produto" />
+    <AssociationSet Name="FK__Cartao__IdFornec__73BA3083" Association="Self.FK__Cartao__IdFornec__73BA3083">
+      <End Role="Fornecedor" EntitySet="Fornecedor" />
+      <End Role="Cartao" EntitySet="Cartao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Produto__IdCateg__5535A963" Association="Self.FK__Produto__IdCateg__5535A963">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Nota__IdCliente__6E01572D" Association="Self.FK__Nota__IdCliente__6E01572D">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Nota" EntitySet="Nota" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fornecedo__IdEnd__4BAC3F29" Association="Self.FK__Fornecedo__IdEnd__4BAC3F29">
+      <End Role="Endereco" EntitySet="Endereco" />
+      <End Role="Fornecedor" EntitySet="Fornecedor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Nota__IdEndereco__70DDC3D8" Association="Self.FK__Nota__IdEndereco__70DDC3D8">
+      <End Role="Endereco" EntitySet="Endereco" />
+      <End Role="Nota" EntitySet="Nota" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Nota__IdForneced__6EF57B66" Association="Self.FK__Nota__IdForneced__6EF57B66">
+      <End Role="Fornecedor" EntitySet="Fornecedor" />
+      <End Role="Nota" EntitySet="Nota" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Produto__IdForne__5629CD9C" Association="Self.FK__Produto__IdForne__5629CD9C">
+      <End Role="Fornecedor" EntitySet="Fornecedor" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Nota__IdPedido__6FE99F9F" Association="Self.FK__Nota__IdPedido__6FE99F9F">
+      <End Role="Pedido" EntitySet="Pedido" />
+      <End Role="Nota" EntitySet="Nota" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pedido__IdProdut__6B24EA82" Association="Self.FK__Pedido__IdProdut__6B24EA82">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="Pedido" EntitySet="Pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pedido__IdNota__02084FDA" Association="eatfitdados2Model.FK__Pedido__IdNota__02084FDA">
+      <End Role="Nota" EntitySet="Nota" />
+      <End Role="Pedido" EntitySet="Pedido" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK__Pedido__IdNota__02084FDA">
+    <End Type="eatfitdados2Model.Nota" Role="Nota" Multiplicity="0..1" />
+    <End Type="eatfitdados2Model.Pedido" Role="Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nota">
+        <PropertyRef Name="IdNota" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="IdNota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

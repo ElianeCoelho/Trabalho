@@ -1,0 +1,75 @@
+﻿@model eattofit.Produto
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3 style="margin-top:30px; text-align:center">Tem Certeza que Deseja Deletar esse Produto?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="margin-top:50px">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeProduto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescricaoProduto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescricaoProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorProduto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.DescriçãoCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.DescriçãoCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fornecedor.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fornecedor.Nome)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" style="margin-left:150px"/> 
+        </div>
+        <br/>
+        <br/>
+        <div>
+            @Html.ActionLink("Retornar tela Anterior", "Index")
+        </div>
+
+    }
+</div>

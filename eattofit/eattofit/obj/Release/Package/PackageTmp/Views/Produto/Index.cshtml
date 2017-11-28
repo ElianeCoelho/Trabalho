@@ -1,0 +1,88 @@
+﻿
+@using PagedList.Mvc;
+@model PagedList.IPagedList<eattofit.Produto>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+    <h3 style="text-align:center; margin-top:30px">Gerenciar Produtos</h3>
+    <br/>
+
+    <p style="text-align:right">
+      @Html.ActionLink("Criar Novo Produto", "Create", "Produto")
+    </p>
+    <br/>
+
+
+    @using (Html.BeginForm("Index", "Produto", FormMethod.Get))
+    {
+        <p>
+        Procura por Nome: @Html.TextBox("SearchString")
+            <input type="submit" value="Buscar" />
+            </p>
+    }
+
+
+
+    <br/>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Nome do Produto", "Index", new { sortOrder = ViewBag.NomeParam})
+            </th>
+            <th>
+                @Html.ActionLink("Descrição do Produto", "Index", new { sortOrder = ViewBag.DescricaoParam })
+            </th>
+            <th>
+                @Html.ActionLink("Valor do Produto", "Index", new { sortOrder = ViewBag.ValorParam })
+            </th>
+            <th>
+                @Html.ActionLink("Categoria do Produto", "Index", new { sortOrder = ViewBag.CategoriaParam })
+            </th>
+           
+            <th>
+                @Html.ActionLink("Foto", "Index", new { sortOrder = ViewBag.UrlParam })
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescricaoProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.DescriçãoCategoria)
+                </td>
+
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Url))
+                {
+                        <img src="@Url.Content(item.Url)" alt="Image" style="width:100px; height:100px; max-width:100%; height:auto" />
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdProduto }) |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.IdProduto })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+ 
+
+<div style="text-align:center">
+    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de  @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortorder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+</div>

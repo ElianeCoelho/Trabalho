@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="eatfitdados2Entities-Web.config Connection String" description="eatfitdados2Entities A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="metadata=res://*/Model.csdl|res://*/Model.ssdl|res://*/Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=servidoreattofitdados2.database.windows.net;initial catalog=eatfitdados2;persist security info=True;user id=papturma2017;password=pap@2017;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\eliane\\Documents\\Visual\ Studio\ 2017\\myprojects\\Trabalho\\eattofit\\eattofit\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='eatfitdados2Entities']/@connectionString" />
+  </parameter>
+</parameters>
