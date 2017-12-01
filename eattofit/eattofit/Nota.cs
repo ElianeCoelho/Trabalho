@@ -30,6 +30,8 @@ namespace eattofit
         [Display(Name = "Forma de Pagameto")]
         public string FormaPagamento { get; set; }
 
+        public Nullable<Decimal> TaxaEntrega { get; set; }
+
 
         public string CpfCliente { get; set; }
         public Nullable<int> IdPedidoMobile { get; set; }

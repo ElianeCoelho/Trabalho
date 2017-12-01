@@ -327,10 +327,6 @@
     <Content Include="Views\Produto\Delete.cshtml" />
     <Content Include="Views\Fornecedor\ListaFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\EditEndereco.cshtml" />
-    <Content Include="Views\Pedido\Create.cshtml" />
-    <Content Include="Views\Pedido\Delete.cshtml" />
-    <Content Include="Views\Pedido\Details.cshtml" />
-    <Content Include="Views\Pedido\Edit.cshtml" />
     <Content Include="Views\Pedido\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
