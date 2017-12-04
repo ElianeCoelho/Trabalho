@@ -163,7 +163,16 @@ namespace eattofit.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdEndereco = new SelectList(db.Endereco, "IdEndereco", "Rua", fornecedor.IdEndereco);
+
+            int idSessao = int.Parse(Session["IdFornecedor"].ToString());
+
+
+
+            var filtro = from c in db.Fornecedor where c.IdEndereco == idSessao select c;
+
+
+
+            ViewBag.IdEndereco = new SelectList(filtro, "IdEndereco", "Rua", fornecedor.IdEndereco);
             return View(fornecedor);
         }
 

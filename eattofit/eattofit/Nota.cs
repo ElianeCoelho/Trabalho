@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+
 namespace eattofit
 {
     using System;
@@ -13,29 +14,20 @@ namespace eattofit
         }
     
         public int IdNota { get; set; }
-
-        [Display(Name = "Data Compra")]
         public Nullable<System.DateTime> DataHoraNota { get; set; }
-        [Display(Name = "Cliente")]
         public Nullable<int> IdCliente { get; set; }
-
         public Nullable<int> IdFornecedor { get; set; }
-
-        [Display(Name = "Número Pedido")]
         public Nullable<int> IdPedido { get; set; }
-
-      
         public Nullable<int> IdEndereco { get; set; }
 
-        [Display(Name = "Forma de Pagameto")]
+        [Display(Name = "Forma de Pagamento")]
         public string FormaPagamento { get; set; }
-
-        public Nullable<Decimal> TaxaEntrega { get; set; }
-
-
         public string CpfCliente { get; set; }
         public Nullable<int> IdPedidoMobile { get; set; }
         public Nullable<int> IdEnderecoMobile { get; set; }
+
+        [Display(Name = "Taxa de Entrega")]
+        public Nullable<decimal> TaxaEntrega { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         public virtual Endereco Endereco { get; set; }

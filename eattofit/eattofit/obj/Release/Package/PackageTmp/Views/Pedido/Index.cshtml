@@ -30,6 +30,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Nota1.FormaPagamento)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nota1.TaxaEntrega)
+        </th>
         <th></th>
     </tr>
 
@@ -53,7 +56,9 @@
          <td>
             @Html.DisplayFor(modelItem => item.Nota1.FormaPagamento)
         </td>
-       
+        <td>
+            @Html.DisplayFor(modelItem => item.Nota1.TaxaEntrega)
+        </td>
     </tr>
 }
 

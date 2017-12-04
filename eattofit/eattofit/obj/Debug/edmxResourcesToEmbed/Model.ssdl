@@ -71,6 +71,7 @@
     <Property Name="CpfCliente" Type="varchar" MaxLength="16" />
     <Property Name="IdPedidoMobile" Type="int" />
     <Property Name="IdEnderecoMobile" Type="int" />
+    <Property Name="TaxaEntrega" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Pedido">
     <Key>

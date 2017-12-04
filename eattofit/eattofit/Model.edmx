@@ -76,6 +76,7 @@
           <Property Name="CpfCliente" Type="varchar" MaxLength="16" />
           <Property Name="IdPedidoMobile" Type="int" />
           <Property Name="IdEnderecoMobile" Type="int" />
+          <Property Name="TaxaEntrega" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
@@ -359,6 +360,7 @@
           <Property Name="IdPedidoMobile" Type="Int32" />
           <Property Name="IdEnderecoMobile" Type="Int32" />
           <NavigationProperty Name="Pedido1" Relationship="eatfitdados2Model.FK__Pedido__IdNota__02084FDA" FromRole="Nota" ToRole="Pedido" />
+          <Property Name="TaxaEntrega" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
@@ -630,6 +632,7 @@
           <EntitySetMapping Name="Nota">
             <EntityTypeMapping TypeName="eatfitdados2Model.Nota">
               <MappingFragment StoreEntitySet="Nota">
+                <ScalarProperty Name="TaxaEntrega" ColumnName="TaxaEntrega" />
                 <ScalarProperty Name="IdEnderecoMobile" ColumnName="IdEnderecoMobile" />
                 <ScalarProperty Name="IdPedidoMobile" ColumnName="IdPedidoMobile" />
                 <ScalarProperty Name="CpfCliente" ColumnName="CpfCliente" />

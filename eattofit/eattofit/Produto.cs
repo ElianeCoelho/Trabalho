@@ -6,12 +6,13 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
+
 namespace eattofit
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Produto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -30,20 +31,15 @@ namespace eattofit
         [Display(Name = "Descrição")]
         public string DescricaoProduto { get; set; }
 
-
         [Display(Name = "Valor Produto")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         public Nullable<decimal> ValorProduto { get; set; }
 
         [Display(Name = "Categoria")]
+        [Required(ErrorMessage = "Obrigatório informar Categoria")]
         public Nullable<int> IdCategoria { get; set; }
-
         public Nullable<int> IdFornecedor { get; set; }
-
-        [Display(Name = "Imagem")]
-        [DataType(DataType.ImageUrl)]
-        [Required(ErrorMessage = "Obrigatório Selecionar Imagem")]
         public string Url { get; set; }
     
         public virtual Categoria Categoria { get; set; }

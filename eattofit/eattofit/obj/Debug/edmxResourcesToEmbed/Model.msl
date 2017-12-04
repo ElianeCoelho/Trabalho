@@ -66,6 +66,7 @@
     <EntitySetMapping Name="Nota">
       <EntityTypeMapping TypeName="eatfitdados2Model.Nota">
         <MappingFragment StoreEntitySet="Nota">
+          <ScalarProperty Name="TaxaEntrega" ColumnName="TaxaEntrega" />
           <ScalarProperty Name="IdEnderecoMobile" ColumnName="IdEnderecoMobile" />
           <ScalarProperty Name="IdPedidoMobile" ColumnName="IdPedidoMobile" />
           <ScalarProperty Name="CpfCliente" ColumnName="CpfCliente" />
